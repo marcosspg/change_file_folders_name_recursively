@@ -106,7 +106,7 @@ while True and menuActivado:
         continue;
 
 
-soloBuscar("E:/Servidores/GarrysMod Helix/garrysmod", True, True, "hpwrewrite", "cpowers");
+reemplazar("E:/Servidores/GarrysMod Helix/garrysmod", True, True, "hpwrewrite", "cpowers");
 # reemplazar("E:/Servidores/GarrysMod Helix/garrysmod", True, True, "spells", "powers");
 # reemplazar("E:/Servidores/GarrysMod Helix/garrysmod", True, True, "Spell", "Power");
 # reemplazar("E:/Servidores/GarrysMod Helix/garrysmod", True, True, "spell", "power");
