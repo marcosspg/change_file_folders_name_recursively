@@ -7,7 +7,7 @@ menuActivado = False;
 
 
 
-def soloBuscar(ruta, recursivo, caseSensitive, buscar, reemplazar):
+def soloBuscar(ruta, caseSensitive, buscar, reemplazar):
     if os.path.isdir(ruta):
         for root, dirs, file in os.walk(ruta):
             root = str(root).replace("\\", "/")+"/"
@@ -22,7 +22,7 @@ def soloBuscar(ruta, recursivo, caseSensitive, buscar, reemplazar):
 
 
 
-def reemplazar(ruta, recursivo, caseSensitive, buscar, reemplazar):
+def reemplazar(ruta, caseSensitive, buscar, reemplazar):
     if os.path.isdir(ruta):
         while True:
             smthfound = False;
@@ -33,9 +33,9 @@ def reemplazar(ruta, recursivo, caseSensitive, buscar, reemplazar):
                         try:
                             smthfound = True;
                             os.rename(root+f, root+str(f).replace(buscar, reemplazar));
-                            print(root+f + " -> "+root+str(f).replace(buscar, reemplazar));
+                            print("[v] "+root+f + " -> "+root+str(f).replace(buscar, reemplazar));
                         except Exception as e:
-                            print("No se puede reemplazar "+root+f);
+                            print("[x] No se puede reemplazar "+root+f);
                             print(e);
                         break;
                 for d in dirs:
@@ -43,9 +43,9 @@ def reemplazar(ruta, recursivo, caseSensitive, buscar, reemplazar):
                         try:
                             smthfound = True;
                             os.rename(root+d, root+str(d).replace(buscar, reemplazar));
-                            print(root+d + " -> "+root+str(d).replace(buscar, reemplazar));
+                            print("[v] "+root+d + " -> "+root+str(d).replace(buscar, reemplazar));
                         except Exception as e:
-                            print("No se puede reemplazar "+root+d);
+                            print("[x] No se puede reemplazar "+root+d);
                             print(e);
                         break;
                 if smthfound:
@@ -59,17 +59,13 @@ def reemplazar(ruta, recursivo, caseSensitive, buscar, reemplazar):
 
 while True and menuActivado:
     ##Opciones
-    recursivo = False;
     caseSensitive = False;
     ##Opciones
 
     print("Introduce la ruta al directorio");
     ruta = input(": ").replace("\\", "/");
 
-    print("Pulsa intro para utilizar de forma recursiva (Introduce x para desactivarlo). Si existen carpetas en la ruta introducida, el programa se meterá dentro de ellas para buscar");
-    recursivoTXT = input(": ");
-    if recursivoTXT.lower() == "":
-        recursivo = True;
+
 
     print("Pulsa intro para que coincidan las mayúsculas y minúsculas en la búsqueda (Introduce x para desactivarlo)");
     caseSensitiveTXT = input(": ");
@@ -82,9 +78,6 @@ while True and menuActivado:
 
     print("Introduce el texto a reemplazar");
     reemplazar = input(": ");
-    recursivoTXT = "No";
-    if recursivo:
-        recursivoTXT = "Sí";
 
     caseSensitiveTXT = "No";
     if caseSensitive:
@@ -92,7 +85,6 @@ while True and menuActivado:
     
     print("""
     Ruta: """+ruta+"""
-    Recursivo: """+recursivoTXT+"""
     Sensible a mayúsculas y minúsculas: """+caseSensitiveTXT+"""
     Texto a buscar: """+buscar+"""
     Texto a reemplazar: """+reemplazar+"""
@@ -106,7 +98,14 @@ while True and menuActivado:
         continue;
 
 
-reemplazar("E:/Servidores/GarrysMod Helix/garrysmod", True, True, "hpwrewrite", "cpowers");
-# reemplazar("E:/Servidores/GarrysMod Helix/garrysmod", True, True, "spells", "powers");
-# reemplazar("E:/Servidores/GarrysMod Helix/garrysmod", True, True, "Spell", "Power");
-# reemplazar("E:/Servidores/GarrysMod Helix/garrysmod", True, True, "spell", "power");
+
+########################          ########################
+########################          ########################
+######################## Ejemplos ########################
+########################          ########################
+########################          ########################
+
+
+#reemplazar("C:/testDir", True, "file", "archivo");
+#soloBuscar("C:/Windows", True, ".jar", ".zip")
+
