@@ -77,7 +77,7 @@ while True and menuActivado:
     buscar = input(":");
 
     print("Introduce el texto a reemplazar");
-    reemplazar = input(": ");
+    reemplazartx = input(": ");
 
     caseSensitiveTXT = "No";
     if caseSensitive:
@@ -87,12 +87,17 @@ while True and menuActivado:
     Ruta: """+ruta+"""
     Sensible a mayúsculas y minúsculas: """+caseSensitiveTXT+"""
     Texto a buscar: """+buscar+"""
-    Texto a reemplazar: """+reemplazar+"""
+    Texto a reemplazar: """+reemplazartx+"""
     """);
-    print("Pulsa intro para empezar a reemplazar (Introduce x para volver a comenzar) ");
+    print("Pulsa intro para empezar a reemplazar o introduce b para solo buscar sin reemplazar (Introduce x para volver a comenzar) ");
     comenzar = input(": ");
     if comenzar == "":
         print("Comienza");
+        reemplazar(ruta, caseSensitive, buscar, reemplazartx);
+        break;
+    elif comenzar.lower() == "b":
+        print("Solo busca");
+        soloBuscar(ruta, caseSensitive, buscar, reemplazartx);
         break;
     else:
         continue;
